@@ -18,7 +18,6 @@ process = Popen(command, stdout=PIPE, stderr=PIPE)
 #print(process)
 process.wait()
 
-#if process.returncode > 0:
-logging.warning('Commit failed: {}, {}, {}, {}'.format(command, process.returncode, process.stdout, process.stderr))
-
-exit(process.returncode)
+if process.returncode > 0:
+    logging.warning('Commit failed: {}, {}, {}, {}'.format(command, process.returncode, process.stdout, process.stderr))
+    exit(process.returncode)
